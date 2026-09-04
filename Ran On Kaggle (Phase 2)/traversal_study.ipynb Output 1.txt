@@ -1,0 +1,162 @@
+## Run 1:
+# ── Set to True to enable expensive training sections ──────────────────────
+RUN_LOCALITY = True   # locality table above always runs; this flag is informational
+RUN_HILBERT  = True  # ~3 h T4  |  Hilbert, 3 seeds x 30 epochs
+RUN_ALL      = False  # ~12 h T4 |  all 4 traversals x 3 seeds x 30 epochs
+
+
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 22.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 2.9 MB/s eta 0:00:00
+packages ready
+
+torch 2.10.0+cu128 | cuda True | hilbertcurve lib: True
+
+WORK_DIR = /kaggle/working
+device   = cuda
+HF_TOKEN = set
+
+Traversal generators ready.
+
+Traversal                   N  Mean seq-dist  Max seq-dist  vs raster_v5
+------------------------------------------------------------------------
+raster_v5                2240           36.0            70         1.00x
+raster_1spp              1024           16.5            32         0.46x
+hilbert                  1024           19.6           853         0.55x
+diagonal                 1024           21.5            62         0.60x
+spiral                   1024           40.6           123         1.13x
+
+Hilbert should show ~6-10x improvement over raster_v5.
+
+Flags set. Paper raster baseline: 6.432 +/- 0.183 bpd
+
+Config(image_size=32, channels=3, traversal='hilbert', spp=1, flyback_frac=0.0, d_model=256, n_heads=4, n_layers=6, ffn_mult=4, dropout=0.1, n_mixtures=5, beam_sigma=0.75, use_path_pos_enc=True, use_seq_pos_enc=False, clip_model_name='ViT-B/32', clip_dim=512, epochs=30, batch_size=32, lr=0.0003, warmup_steps=500, grad_clip=1.0, ss_prob_max=0.25, seed=0, device='cuda', eval_every=5, ckpt_dir='/kaggle/working/ckpt')
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading CLIP …
+/usr/local/lib/python3.12/dist-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+  CLIP ViT-B/32: 151.3M params (frozen)
+Loading Oxford Flowers 102 …
+  train=7169, test=1020
+
+traversal   = hilbert  (N=1024)
+params      = 5,669,923  (5.67M)
+nll shape   = torch.Size([2, 1024])   OK
+Sanity check PASSED
+
+=== hilbert  seed=0  N=1024 ===
+epoch   1/30  avg_nll=70.8749
+epoch   2/30  avg_nll=64.4337
+epoch   3/30  avg_nll=50.0590
+epoch   4/30  avg_nll=41.2055
+epoch   5/30  avg_nll=34.1065   val bpd=12.9313
+epoch   6/30  avg_nll=21.9565
+epoch   7/30  avg_nll=19.2306
+epoch   8/30  avg_nll=18.7148
+epoch   9/30  avg_nll=18.4874
+epoch  10/30  avg_nll=18.3356   val bpd=8.7798
+epoch  11/30  avg_nll=18.2184
+epoch  12/30  avg_nll=18.1230
+epoch  13/30  avg_nll=18.0474
+epoch  14/30  avg_nll=17.9877
+epoch  15/30  avg_nll=17.9414   val bpd=8.5529
+epoch  16/30  avg_nll=17.9075
+epoch  17/30  avg_nll=17.8839
+epoch  18/30  avg_nll=17.8698
+epoch  19/30  avg_nll=17.8618
+epoch  20/30  avg_nll=17.8579   val bpd=8.4912
+epoch  21/30  avg_nll=17.8570
+epoch  22/30  avg_nll=17.8582
+epoch  23/30  avg_nll=17.8612
+epoch  24/30  avg_nll=17.8662
+epoch  25/30  avg_nll=17.8712   val bpd=8.4951
+epoch  26/30  avg_nll=17.8776
+epoch  27/30  avg_nll=17.8846
+epoch  28/30  avg_nll=17.8923
+epoch  29/30  avg_nll=17.8999
+epoch  30/30  avg_nll=17.9074   val bpd=8.5079
+  bpd_pixel = 8.5079
+
+=== hilbert  seed=1  N=1024 ===
+epoch   1/30  avg_nll=72.8972
+epoch   2/30  avg_nll=67.5773
+epoch   3/30  avg_nll=58.6792
+epoch   4/30  avg_nll=48.8093
+epoch   5/30  avg_nll=31.6158   val bpd=11.2027
+epoch   6/30  avg_nll=20.4950
+epoch   7/30  avg_nll=18.7481
+epoch   8/30  avg_nll=18.4926
+epoch   9/30  avg_nll=18.3444
+epoch  10/30  avg_nll=18.2339   val bpd=8.7165
+epoch  11/30  avg_nll=18.1433
+epoch  12/30  avg_nll=18.0680
+epoch  13/30  avg_nll=18.0057
+epoch  14/30  avg_nll=17.9573
+epoch  15/30  avg_nll=17.9207   val bpd=8.5296
+epoch  16/30  avg_nll=17.8944
+epoch  17/30  avg_nll=17.8775
+epoch  18/30  avg_nll=17.8666
+epoch  19/30  avg_nll=17.8614
+epoch  20/30  avg_nll=17.8599   val bpd=8.4798
+epoch  21/30  avg_nll=17.8610
+epoch  22/30  avg_nll=17.8627
+epoch  23/30  avg_nll=17.8673
+epoch  24/30  avg_nll=17.8726
+epoch  25/30  avg_nll=17.8790   val bpd=8.4899
+epoch  26/30  avg_nll=17.8854
+epoch  27/30  avg_nll=17.8923
+epoch  28/30  avg_nll=17.8997
+epoch  29/30  avg_nll=17.9082
+epoch  30/30  avg_nll=17.9161   val bpd=8.5015
+  bpd_pixel = 8.5015
+
+=== hilbert  seed=2  N=1024 ===
+epoch   1/30  avg_nll=71.4908
+epoch   2/30  avg_nll=65.9564
+epoch   3/30  avg_nll=54.8092
+epoch   4/30  avg_nll=39.8788
+epoch   5/30  avg_nll=24.1720   val bpd=9.6966
+epoch   6/30  avg_nll=19.3513
+epoch   7/30  avg_nll=18.6173
+epoch   8/30  avg_nll=18.3600
+epoch   9/30  avg_nll=18.2060
+epoch  10/30  avg_nll=18.0901   val bpd=8.6395
+epoch  11/30  avg_nll=17.9987
+epoch  12/30  avg_nll=17.9276
+epoch  13/30  avg_nll=17.8740
+epoch  14/30  avg_nll=17.8354
+epoch  15/30  avg_nll=17.8091   val bpd=8.4680
+epoch  16/30  avg_nll=17.7922
+epoch  17/30  avg_nll=17.7843
+epoch  18/30  avg_nll=17.7801
+epoch  19/30  avg_nll=17.7794
+epoch  20/30  avg_nll=17.7807   val bpd=8.4393
+epoch  21/30  avg_nll=17.7837
+epoch  22/30  avg_nll=17.7884
+epoch  23/30  avg_nll=17.7935
+epoch  24/30  avg_nll=17.8008
+epoch  25/30  avg_nll=17.8060   val bpd=8.4507
+epoch  26/30  avg_nll=17.8127
+epoch  27/30  avg_nll=17.8215
+epoch  28/30  avg_nll=17.8298
+epoch  29/30  avg_nll=17.8385
+epoch  30/30  avg_nll=17.8468   val bpd=8.4650
+  bpd_pixel = 8.4650
+
+Results saved -> /kaggle/working/traversal_results.json
+
+================================================================
+TRAVERSAL COMPARISON — Oxford Flowers 32x32, 30 ep, 3 seeds
+================================================================
+Traversal                   bpd mean   bpd std   vs raster_v5
+----------------------------------------------------------------
+raster_v5 (paper)             6.4320    0.1830          (ref)
+hilbert                       8.4915    0.0231         +2.059
+
+For the paper:
+  Hilbert: 8.4915 +/- 0.0231 bpd
+  Improvement over raster_v5: -2.0595 bpd
+
+Set RUN_SAMPLES=True after RUN_HILBERT training completes.

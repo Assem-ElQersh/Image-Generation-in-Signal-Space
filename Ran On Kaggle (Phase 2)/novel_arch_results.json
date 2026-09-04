@@ -1,0 +1,116 @@
+{
+  "exp_A_delta": {
+    "delta": [
+      {
+        "bpd_pixel": 8.784
+      },
+      {
+        "bpd_pixel": 8.7584
+      },
+      {
+        "bpd_pixel": 8.7628
+      }
+    ]
+  },
+  "exp_B_corr": {
+    "random_r0": {
+      "bpd": 8.7202,
+      "bpd_std": 0.0
+    },
+    "random_r1": {
+      "bpd": 8.7189,
+      "bpd_std": 0.0
+    },
+    "random_r2": {
+      "bpd": 8.7186,
+      "bpd_std": 0.0
+    },
+    "random_r3": {
+      "bpd": 8.7254,
+      "bpd_std": 0.0
+    },
+    "random_r4": {
+      "bpd": 8.7193,
+      "bpd_std": 0.0
+    },
+    "raster_1spp": {
+      "bpd": 8.495,
+      "bpd_std": 0.02331351539343677,
+      "locality_mean": 16.5,
+      "locality_p95": 32.0
+    },
+    "hilbert": {
+      "bpd": 8.491466666666666,
+      "bpd_std": 0.02314310552482806,
+      "locality_mean": 19.625,
+      "locality_p95": 79.0
+    },
+    "diagonal": {
+      "bpd": 8.507633333333333,
+      "bpd_std": 0.0215360937343176,
+      "locality_mean": 21.5,
+      "locality_p95": 49.0
+    },
+    "spiral": {
+      "bpd": 8.483733333333333,
+      "bpd_std": 0.02393999443052074,
+      "locality_mean": 40.5625,
+      "locality_p95": 117.0
+    }
+  },
+  "exp_C_aug": {
+    "traversal_aug": [
+      {
+        "bpd_pixel": 8.5284
+      },
+      {
+        "bpd_pixel": 8.510469859977798
+      },
+      {
+        "bpd_pixel": 8.477449665819142
+      }
+    ]
+  },
+  "exp_D_patch_hier": {
+    "patch_hier_8": [
+      {
+        "bpd_pixel": 8.527397751251064
+      },
+      {
+        "bpd_pixel": 8.521771820604323
+      },
+      {
+        "bpd_pixel": 8.487300616239198
+      }
+    ]
+  },
+  "exp_E_conv_stem": {
+    "conv_stem": [
+      {
+        "bpd_pixel": 8.79883323272811
+      }
+    ]
+  },
+  "fixed_traversals": {
+    "raster_1spp": [
+      8.5106,
+      8.5062,
+      8.4682
+    ],
+    "hilbert": [
+      8.5079,
+      8.5015,
+      8.465
+    ],
+    "diagonal": [
+      8.5229,
+      8.517,
+      8.483
+    ],
+    "spiral": [
+      8.4982,
+      8.4969,
+      8.4561
+    ]
+  }
+}

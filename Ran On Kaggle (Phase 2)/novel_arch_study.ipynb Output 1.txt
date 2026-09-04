@@ -1,0 +1,373 @@
+Version was canceled after 43200.3s (timeout exceeded)
+
+Time
+#
+Log Message
+7.4s	1	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.4s	2	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.4s	3	0.00s - to python to disable frozen modules.
+7.4s	4	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+8.1s	5	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.1s	6	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.1s	7	0.00s - to python to disable frozen modules.
+8.1s	8	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+23.5s	9	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 24.1 MB/s eta 0:00:00
+23.5s	10	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 3.0 MB/s eta 0:00:00
+23.7s	11	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 24.1 MB/s eta 0:00:00
+23.7s	12	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 3.0 MB/s eta 0:00:00
+28.9s	13	packages ready
+35.3s	14	torch 2.10.0+cu128 | cuda True
+35.4s	15	WORK_DIR = /kaggle/working
+35.4s	16	device   = cuda
+35.4s	17	HF_TOKEN = set
+35.4s	18	Traversal generators ready (including random_path control).
+35.5s	19	Flags set. Baseline: raster_1spp = 8.495 +/- 0.0233 bpd
+35.5s	20	Config(image_size=32, channels=3, traversal='raster_1spp', spp=1, flyback_frac=0.0, d_model=256, n_heads=4, n_layers=6, ffn_mult=4, dropout=0.1, n_mixtures=5, beam_sigma=0.75, use_path_pos_enc=True, use_seq_pos_enc=False, clip_model_name='ViT-B/32', clip_dim=512, epochs=30, batch_size=32, lr=0.0003, warmup_steps=500, grad_clip=1.0, ss_prob_max=0.25, seed=0, device='cuda', eval_every=5, ckpt_dir='/kaggle/working/ckpt')
+58.0s	21	Loading CLIP ...
+62.6s	22	/usr/local/lib/python3.12/dist-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+62.6s	23	  warnings.warn(
+62.6s	24	
+62.6s	25	/usr/local/lib/python3.12/dist-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+62.6s	26	  warnings.warn(
+65.0s	27	  CLIP ViT-B/32: 151.3M params (frozen)
+65.0s	28	Loading Oxford Flowers 102 ...
+74.7s	29	  train=7169, test=1020
+75.7s	30	SignalTransformer     params = 5,669,923  (5.67M)
+75.7s	31	DeltaSignalTransformer params = 5,669,923  (5.67M)  (identical — only forward() differs)
+75.7s	32	Sanity check PASSED
+91.2s	33	
+91.2s	34	=== delta  seed=0  N=1024 ===
+231.4s	35	epoch   1/30  avg_nll=70.7115
+377.4s	36	epoch   2/30  avg_nll=63.0693
+523.7s	37	epoch   3/30  avg_nll=47.0999
+671.0s	38	epoch   4/30  avg_nll=39.9671
+830.3s	39	epoch   5/30  avg_nll=32.5798   val bpd=11.6063
+978.0s	40	epoch   6/30  avg_nll=20.6357
+1125.7s	41	epoch   7/30  avg_nll=18.7742
+1273.7s	42	epoch   8/30  avg_nll=18.5157
+1421.7s	43	epoch   9/30  avg_nll=18.4484
+1581.3s	44	epoch  10/30  avg_nll=18.4117   val bpd=8.8390
+1729.5s	45	epoch  11/30  avg_nll=18.3842
+1877.6s	46	epoch  12/30  avg_nll=18.3610
+2025.2s	47	epoch  13/30  avg_nll=18.3419
+2172.9s	48	epoch  14/30  avg_nll=18.3247
+2331.8s	49	epoch  15/30  avg_nll=18.3097   val bpd=8.8052
+2479.2s	50	epoch  16/30  avg_nll=18.2965
+2626.7s	51	epoch  17/30  avg_nll=18.2846
+2774.1s	52	epoch  18/30  avg_nll=18.2744
+2921.4s	53	epoch  19/30  avg_nll=18.2650
+3080.4s	54	epoch  20/30  avg_nll=18.2567   val bpd=8.7905
+3227.7s	55	epoch  21/30  avg_nll=18.2494
+3374.9s	56	epoch  22/30  avg_nll=18.2426
+3522.2s	57	epoch  23/30  avg_nll=18.2370
+3669.3s	58	epoch  24/30  avg_nll=18.2320
+3827.5s	59	epoch  25/30  avg_nll=18.2278   val bpd=8.7845
+3974.2s	60	epoch  26/30  avg_nll=18.2246
+4121.2s	61	epoch  27/30  avg_nll=18.2211
+4268.4s	62	epoch  28/30  avg_nll=18.2188
+4415.6s	63	epoch  29/30  avg_nll=18.2161
+4574.1s	64	epoch  30/30  avg_nll=18.2138   val bpd=8.7840
+4585.5s	65	  bpd_pixel = 8.7840
+4600.2s	66	
+4600.2s	67	=== delta  seed=1  N=1024 ===
+4747.5s	68	epoch   1/30  avg_nll=72.6949
+4894.3s	69	epoch   2/30  avg_nll=67.1843
+5041.3s	70	epoch   3/30  avg_nll=58.3274
+5187.8s	71	epoch   4/30  avg_nll=48.1775
+5345.5s	72	epoch   5/30  avg_nll=29.7910   val bpd=10.2524
+5491.4s	73	epoch   6/30  avg_nll=19.6506
+5637.5s	74	epoch   7/30  avg_nll=18.5336
+5783.8s	75	epoch   8/30  avg_nll=18.4359
+5930.3s	76	epoch   9/30  avg_nll=18.4000
+6088.8s	77	epoch  10/30  avg_nll=18.3739   val bpd=8.8245
+6235.9s	78	epoch  11/30  avg_nll=18.3514
+6383.1s	79	epoch  12/30  avg_nll=18.3310
+6530.3s	80	epoch  13/30  avg_nll=18.3119
+6677.6s	81	epoch  14/30  avg_nll=18.2939
+6836.3s	82	epoch  15/30  avg_nll=18.2777   val bpd=8.7891
+6983.7s	83	epoch  16/30  avg_nll=18.2624
+7131.2s	84	epoch  17/30  avg_nll=18.2495
+7278.5s	85	epoch  18/30  avg_nll=18.2378
+7426.0s	86	epoch  19/30  avg_nll=18.2279
+7584.8s	87	epoch  20/30  avg_nll=18.2190   val bpd=8.7669
+7732.3s	88	epoch  21/30  avg_nll=18.2122
+7879.6s	89	epoch  22/30  avg_nll=18.2061
+8027.0s	90	epoch  23/30  avg_nll=18.2014
+8174.5s	91	epoch  24/30  avg_nll=18.1972
+8333.5s	92	epoch  25/30  avg_nll=18.1941   val bpd=8.7596
+8481.0s	93	epoch  26/30  avg_nll=18.1912
+8628.7s	94	epoch  27/30  avg_nll=18.1893
+8776.6s	95	epoch  28/30  avg_nll=18.1874
+8924.4s	96	epoch  29/30  avg_nll=18.1859
+9083.4s	97	epoch  30/30  avg_nll=18.1848   val bpd=8.7584
+9094.9s	98	  bpd_pixel = 8.7584
+9109.8s	99	
+9109.8s	100	=== delta  seed=2  N=1024 ===
+9257.1s	101	epoch   1/30  avg_nll=71.4330
+9404.0s	102	epoch   2/30  avg_nll=65.4765
+9550.9s	103	epoch   3/30  avg_nll=55.4756
+9697.7s	104	epoch   4/30  avg_nll=40.9089
+9855.9s	105	epoch   5/30  avg_nll=23.6139   val bpd=9.5633
+10002.5s	106	epoch   6/30  avg_nll=19.2150
+10149.7s	107	epoch   7/30  avg_nll=18.5403
+10296.7s	108	epoch   8/30  avg_nll=18.4048
+10443.5s	109	epoch   9/30  avg_nll=18.3637
+10602.3s	110	epoch  10/30  avg_nll=18.3377   val bpd=8.8111
+10749.3s	111	epoch  11/30  avg_nll=18.3160
+10896.3s	112	epoch  12/30  avg_nll=18.2976
+11043.5s	113	epoch  13/30  avg_nll=18.2818
+11190.7s	114	epoch  14/30  avg_nll=18.2665
+11349.3s	115	epoch  15/30  avg_nll=18.2526   val bpd=8.7838
+11496.5s	116	epoch  16/30  avg_nll=18.2405
+11643.8s	117	epoch  17/30  avg_nll=18.2291
+11791.3s	118	epoch  18/30  avg_nll=18.2186
+11938.8s	119	epoch  19/30  avg_nll=18.2093
+12097.8s	120	epoch  20/30  avg_nll=18.2005   val bpd=8.7684
+12245.2s	121	epoch  21/30  avg_nll=18.1927
+12392.8s	122	epoch  22/30  avg_nll=18.1860
+12540.7s	123	epoch  23/30  avg_nll=18.1800
+12688.3s	124	epoch  24/30  avg_nll=18.1753
+12847.0s	125	epoch  25/30  avg_nll=18.1705   val bpd=8.7628
+12994.1s	126	epoch  26/30  avg_nll=18.1669
+13141.2s	127	epoch  27/30  avg_nll=18.1632
+13288.3s	128	epoch  28/30  avg_nll=18.1608
+13435.6s	129	epoch  29/30  avg_nll=18.1586
+13594.1s	130	epoch  30/30  avg_nll=18.1561   val bpd=8.7628
+13605.3s	131	  bpd_pixel = 8.7628
+13605.3s	132	
+13605.3s	133	=== Exp A summary ===
+13605.3s	134	  delta: 8.7684 +/- 0.0137 bpd
+13605.3s	135	  vs baseline (8.4950): -0.2734 bpd
+13605.3s	136	  RESULT: Delta encoding did NOT improve over baseline  ✗
+13620.4s	137	
+13620.4s	138	=== random_r0  locality_mean=342.1  N=1024 ===
+13767.8s	139	epoch   1/30  avg_nll=71.3690
+13914.8s	140	epoch   2/30  avg_nll=65.0932
+14061.6s	141	epoch   3/30  avg_nll=49.2531
+14208.1s	142	epoch   4/30  avg_nll=40.3211
+14366.4s	143	epoch   5/30  avg_nll=31.9503   val bpd=11.6000
+14512.9s	144	epoch   6/30  avg_nll=20.7443
+14659.4s	145	epoch   7/30  avg_nll=18.9427
+14805.7s	146	epoch   8/30  avg_nll=18.5706
+14952.2s	147	epoch   9/30  avg_nll=18.4516
+15110.4s	148	epoch  10/30  avg_nll=18.3885   val bpd=8.8827
+15257.3s	149	epoch  11/30  avg_nll=18.3454
+15404.2s	150	epoch  12/30  avg_nll=18.3126
+15551.4s	151	epoch  13/30  avg_nll=18.2876
+15698.5s	152	epoch  14/30  avg_nll=18.2670
+15857.0s	153	epoch  15/30  avg_nll=18.2496   val bpd=8.7506
+16005.3s	154	epoch  16/30  avg_nll=18.2354
+16152.6s	155	epoch  17/30  avg_nll=18.2232
+16300.0s	156	epoch  18/30  avg_nll=18.2131
+16447.3s	157	epoch  19/30  avg_nll=18.2044
+16606.1s	158	epoch  20/30  avg_nll=18.1974   val bpd=8.7211
+16753.4s	159	epoch  21/30  avg_nll=18.1915
+16900.7s	160	epoch  22/30  avg_nll=18.1870
+17048.1s	161	epoch  23/30  avg_nll=18.1828
+17195.4s	162	epoch  24/30  avg_nll=18.1804
+17354.6s	163	epoch  25/30  avg_nll=18.1787   val bpd=8.7173
+17502.5s	164	epoch  26/30  avg_nll=18.1777
+17650.6s	165	epoch  27/30  avg_nll=18.1774
+17799.0s	166	epoch  28/30  avg_nll=18.1774
+17947.3s	167	epoch  29/30  avg_nll=18.1780
+18106.7s	168	epoch  30/30  avg_nll=18.1786   val bpd=8.7202
+18118.3s	169	  bpd_pixel = 8.7202
+18133.4s	170	
+18133.4s	171	=== random_r1  locality_mean=341.3  N=1024 ===
+18281.0s	172	epoch   1/30  avg_nll=71.3330
+18427.9s	173	epoch   2/30  avg_nll=65.0428
+18575.3s	174	epoch   3/30  avg_nll=49.2146
+18722.3s	175	epoch   4/30  avg_nll=40.2970
+18880.7s	176	epoch   5/30  avg_nll=31.8568   val bpd=11.5497
+19027.3s	177	epoch   6/30  avg_nll=20.7178
+19174.5s	178	epoch   7/30  avg_nll=18.9417
+19321.9s	179	epoch   8/30  avg_nll=18.5711
+19469.5s	180	epoch   9/30  avg_nll=18.4520
+19628.4s	181	epoch  10/30  avg_nll=18.3883   val bpd=8.8825
+19775.6s	182	epoch  11/30  avg_nll=18.3447
+19923.1s	183	epoch  12/30  avg_nll=18.3111
+20071.8s	184	epoch  13/30  avg_nll=18.2854
+20219.8s	185	epoch  14/30  avg_nll=18.2640
+20379.0s	186	epoch  15/30  avg_nll=18.2462   val bpd=8.7495
+20526.6s	187	epoch  16/30  avg_nll=18.2314
+20674.2s	188	epoch  17/30  avg_nll=18.2186
+20821.9s	189	epoch  18/30  avg_nll=18.2080
+20969.4s	190	epoch  19/30  avg_nll=18.1989
+21128.7s	191	epoch  20/30  avg_nll=18.1914   val bpd=8.7194
+21276.7s	192	epoch  21/30  avg_nll=18.1853
+21424.5s	193	epoch  22/30  avg_nll=18.1803
+21572.2s	194	epoch  23/30  avg_nll=18.1762
+21720.1s	195	epoch  24/30  avg_nll=18.1735
+21879.5s	196	epoch  25/30  avg_nll=18.1717   val bpd=8.7159
+22027.3s	197	epoch  26/30  avg_nll=18.1706
+22175.2s	198	epoch  27/30  avg_nll=18.1704
+22323.2s	199	epoch  28/30  avg_nll=18.1701
+22471.0s	200	epoch  29/30  avg_nll=18.1708
+22630.5s	201	epoch  30/30  avg_nll=18.1715   val bpd=8.7189
+22642.0s	202	  bpd_pixel = 8.7189
+22657.2s	203	
+22657.2s	204	=== random_r2  locality_mean=345.0  N=1024 ===
+22804.9s	205	epoch   1/30  avg_nll=71.3474
+22952.0s	206	epoch   2/30  avg_nll=65.0548
+23099.7s	207	epoch   3/30  avg_nll=49.2250
+23247.1s	208	epoch   4/30  avg_nll=40.3090
+23406.3s	209	epoch   5/30  avg_nll=31.9072   val bpd=11.5784
+23554.2s	210	epoch   6/30  avg_nll=20.7316
+23702.0s	211	epoch   7/30  avg_nll=18.9424
+23849.8s	212	epoch   8/30  avg_nll=18.5715
+23997.8s	213	epoch   9/30  avg_nll=18.4528
+24157.4s	214	epoch  10/30  avg_nll=18.3896   val bpd=8.8826
+24305.4s	215	epoch  11/30  avg_nll=18.3463
+24453.4s	216	epoch  12/30  avg_nll=18.3131
+24601.4s	217	epoch  13/30  avg_nll=18.2877
+24749.5s	218	epoch  14/30  avg_nll=18.2670
+24908.8s	219	epoch  15/30  avg_nll=18.2495   val bpd=8.7496
+25056.7s	220	epoch  16/30  avg_nll=18.2349
+25204.9s	221	epoch  17/30  avg_nll=18.2225
+25352.6s	222	epoch  18/30  avg_nll=18.2124
+25500.2s	223	epoch  19/30  avg_nll=18.2034
+25659.1s	224	epoch  20/30  avg_nll=18.1962   val bpd=8.7196
+25806.5s	225	epoch  21/30  avg_nll=18.1904
+25953.9s	226	epoch  22/30  avg_nll=18.1854
+26101.4s	227	epoch  23/30  avg_nll=18.1815
+26248.9s	228	epoch  24/30  avg_nll=18.1786
+26407.8s	229	epoch  25/30  avg_nll=18.1770   val bpd=8.7157
+26555.1s	230	epoch  26/30  avg_nll=18.1759
+26702.6s	231	epoch  27/30  avg_nll=18.1757
+26850.2s	232	epoch  28/30  avg_nll=18.1757
+26997.8s	233	epoch  29/30  avg_nll=18.1764
+27156.8s	234	epoch  30/30  avg_nll=18.1768   val bpd=8.7186
+27168.4s	235	  bpd_pixel = 8.7186
+27183.2s	236	
+27183.2s	237	=== random_r3  locality_mean=342.3  N=1024 ===
+27330.8s	238	epoch   1/30  avg_nll=71.3605
+27477.0s	239	epoch   2/30  avg_nll=65.0842
+27623.8s	240	epoch   3/30  avg_nll=49.2152
+27770.9s	241	epoch   4/30  avg_nll=40.2978
+27929.6s	242	epoch   5/30  avg_nll=31.8982   val bpd=11.5736
+28076.6s	243	epoch   6/30  avg_nll=20.7227
+28223.6s	244	epoch   7/30  avg_nll=18.9364
+28370.8s	245	epoch   8/30  avg_nll=18.5673
+28518.1s	246	epoch   9/30  avg_nll=18.4501
+28677.0s	247	epoch  10/30  avg_nll=18.3880   val bpd=8.8861
+28824.3s	248	epoch  11/30  avg_nll=18.3455
+28971.4s	249	epoch  12/30  avg_nll=18.3130
+29118.6s	250	epoch  13/30  avg_nll=18.2881
+29266.1s	251	epoch  14/30  avg_nll=18.2675
+29425.0s	252	epoch  15/30  avg_nll=18.2502   val bpd=8.7559
+29572.6s	253	epoch  16/30  avg_nll=18.2355
+29720.2s	254	epoch  17/30  avg_nll=18.2235
+29867.8s	255	epoch  18/30  avg_nll=18.2131
+30015.7s	256	epoch  19/30  avg_nll=18.2041
+30175.4s	257	epoch  20/30  avg_nll=18.1970   val bpd=8.7265
+30323.1s	258	epoch  21/30  avg_nll=18.1909
+30471.0s	259	epoch  22/30  avg_nll=18.1862
+30619.1s	260	epoch  23/30  avg_nll=18.1821
+30767.3s	261	epoch  24/30  avg_nll=18.1795
+30927.1s	262	epoch  25/30  avg_nll=18.1777   val bpd=8.7227
+31075.1s	263	epoch  26/30  avg_nll=18.1764
+31223.2s	264	epoch  27/30  avg_nll=18.1762
+31371.7s	265	epoch  28/30  avg_nll=18.1761
+31519.8s	266	epoch  29/30  avg_nll=18.1770
+31679.5s	267	epoch  30/30  avg_nll=18.1772   val bpd=8.7254
+31691.1s	268	  bpd_pixel = 8.7254
+31705.9s	269	
+31705.9s	270	=== random_r4  locality_mean=337.0  N=1024 ===
+31853.3s	271	epoch   1/30  avg_nll=71.3716
+32000.2s	272	epoch   2/30  avg_nll=65.1070
+32147.9s	273	epoch   3/30  avg_nll=49.2678
+32295.3s	274	epoch   4/30  avg_nll=40.3455
+32454.1s	275	epoch   5/30  avg_nll=32.0599   val bpd=11.6646
+32601.6s	276	epoch   6/30  avg_nll=20.7814
+32749.2s	277	epoch   7/30  avg_nll=18.9463
+32896.9s	278	epoch   8/30  avg_nll=18.5713
+33044.5s	279	epoch   9/30  avg_nll=18.4520
+33203.7s	280	epoch  10/30  avg_nll=18.3888   val bpd=8.8826
+33351.4s	281	epoch  11/30  avg_nll=18.3456
+33498.9s	282	epoch  12/30  avg_nll=18.3126
+33646.7s	283	epoch  13/30  avg_nll=18.2873
+33794.5s	284	epoch  14/30  avg_nll=18.2667
+33954.0s	285	epoch  15/30  avg_nll=18.2495   val bpd=8.7497
+34102.6s	286	epoch  16/30  avg_nll=18.2352
+34250.7s	287	epoch  17/30  avg_nll=18.2230
+34398.8s	288	epoch  18/30  avg_nll=18.2129
+34546.8s	289	epoch  19/30  avg_nll=18.2042
+34706.4s	290	epoch  20/30  avg_nll=18.1970   val bpd=8.7202
+34854.2s	291	epoch  21/30  avg_nll=18.1912
+35002.3s	292	epoch  22/30  avg_nll=18.1865
+35150.4s	293	epoch  23/30  avg_nll=18.1825
+35298.2s	294	epoch  24/30  avg_nll=18.1802
+35457.7s	295	epoch  25/30  avg_nll=18.1785   val bpd=8.7164
+35605.4s	296	epoch  26/30  avg_nll=18.1774
+35753.3s	297	epoch  27/30  avg_nll=18.1772
+35901.1s	298	epoch  28/30  avg_nll=18.1772
+36049.0s	299	epoch  29/30  avg_nll=18.1780
+36207.9s	300	epoch  30/30  avg_nll=18.1784   val bpd=8.7193
+36219.3s	301	  bpd_pixel = 8.7193
+36219.3s	302	
+36219.3s	303	=== Locality ↔ bpd Correlation ===
+36219.3s	304	Name                locality_mean      bpd
+36219.3s	305	--------------------------------------------
+36219.3s	306	raster_1spp                  16.5   8.4950
+36219.3s	307	hilbert                      19.6   8.4915
+36219.3s	308	diagonal                     21.5   8.5076
+36219.3s	309	spiral                       40.6   8.4837
+36219.3s	310	random_r4                   337.0   8.7193
+36219.3s	311	random_r1                   341.3   8.7189
+36219.3s	312	random_r0                   342.1   8.7202
+36219.3s	313	random_r3                   342.3   8.7254
+36219.3s	314	random_r2                   345.0   8.7186
+36219.3s	315	
+36219.3s	316	Pearson r = 0.996,  p = 0.0000
+36219.3s	317	  RESULT: Strong locality-bpd correlation  ✓  (supports theory)
+36219.5s	318	
+36219.5s	319	=== traversal_aug  seed=0 ===
+36424.2s	320	epoch   1/30  [spiral      ]  avg_nll=71.0712
+36570.1s	321	epoch   2/30  [spiral      ]  avg_nll=64.6711
+36717.7s	322	epoch   3/30  [raster_1spp ]  avg_nll=49.9868
+36865.1s	323	epoch   4/30  [diagonal    ]  avg_nll=41.0656
+37023.7s	324	epoch   5/30  [spiral      ]  avg_nll=33.2516  val bpd(raster)=12.4017
+37170.8s	325	epoch   6/30  [spiral      ]  avg_nll=21.4880
+37318.1s	326	epoch   7/30  [diagonal    ]  avg_nll=19.1818
+37465.3s	327	epoch   8/30  [spiral      ]  avg_nll=18.6966
+37612.7s	328	epoch   9/30  [diagonal    ]  avg_nll=18.4740
+37771.5s	329	epoch  10/30  [hilbert     ]  avg_nll=18.3341  val bpd(raster)=8.7776
+37918.7s	330	epoch  11/30  [hilbert     ]  avg_nll=18.2163
+38066.1s	331	epoch  12/30  [diagonal    ]  avg_nll=18.1318
+38213.8s	332	epoch  13/30  [hilbert     ]  avg_nll=18.0471
+38361.4s	333	epoch  14/30  [raster_1spp ]  avg_nll=17.9923
+38520.7s	334	epoch  15/30  [diagonal    ]  avg_nll=17.9696  val bpd(raster)=8.5603
+38668.2s	335	epoch  16/30  [hilbert     ]  avg_nll=17.9091
+38815.9s	336	epoch  17/30  [diagonal    ]  avg_nll=17.9223
+38963.5s	337	epoch  18/30  [raster_1spp ]  avg_nll=17.8825
+39111.3s	338	epoch  19/30  [raster_1spp ]  avg_nll=17.8749
+39270.4s	339	epoch  20/30  [diagonal    ]  avg_nll=17.9021  val bpd(raster)=8.5070
+39418.0s	340	epoch  21/30  [spiral      ]  avg_nll=17.8476
+39566.3s	341	epoch  22/30  [raster_1spp ]  avg_nll=17.8729
+39714.1s	342	epoch  23/30  [diagonal    ]  avg_nll=17.9063
+39861.7s	343	epoch  24/30  [spiral      ]  avg_nll=17.8571
+40020.7s	344	epoch  25/30  [diagonal    ]  avg_nll=17.9158  val bpd(raster)=8.5130
+40168.4s	345	epoch  26/30  [hilbert     ]  avg_nll=17.8809
+40316.1s	346	epoch  27/30  [spiral      ]  avg_nll=17.8795
+40463.8s	347	epoch  28/30  [spiral      ]  avg_nll=17.8827
+40611.5s	348	epoch  29/30  [diagonal    ]  avg_nll=17.9410
+40770.7s	349	epoch  30/30  [raster_1spp ]  avg_nll=17.9202  val bpd(raster)=8.5284
+40782.3s	350	Traversal distribution: {'spiral': 9, 'raster_1spp': 6, 'diagonal': 10, 'hilbert': 5}
+40782.3s	351	  bpd_pixel = 8.5284
+40782.3s	352	
+40782.3s	353	=== traversal_aug  seed=1 ===
+40988.1s	354	epoch   1/30  [hilbert     ]  avg_nll=72.8972
+41134.1s	355	epoch   2/30  [raster_1spp ]  avg_nll=67.6138
+41280.8s	356	epoch   3/30  [diagonal    ]  avg_nll=58.6768
+41428.2s	357	epoch   4/30  [raster_1spp ]  avg_nll=48.8182
+41587.0s	358	epoch   5/30  [spiral      ]  avg_nll=31.5478  val bpd(raster)=11.2153
+41734.2s	359	epoch   6/30  [spiral      ]  avg_nll=20.4776
+41881.8s	360	epoch   7/30  [spiral      ]  avg_nll=18.7463
+42029.0s	361	epoch   8/30  [spiral      ]  avg_nll=18.4880
+42176.2s	362	epoch   9/30  [hilbert     ]  avg_nll=18.3446
+42334.8s	363	epoch  10/30  [raster_1spp ]  avg_nll=18.2353  val bpd(raster)=8.7158
+42482.1s	364	epoch  11/30  [spiral      ]  avg_nll=18.1356
+42629.3s	365	epoch  12/30  [raster_1spp ]  avg_nll=18.0728
+42776.7s	366	epoch  13/30  [spiral      ]  avg_nll=17.9970
+42924.2s	367	epoch  14/30  [spiral      ]  avg_nll=17.9477
+43083.2s	368	epoch  15/30  [raster_1spp ]  avg_nll=17.9318  val bpd(raster)=8.5327

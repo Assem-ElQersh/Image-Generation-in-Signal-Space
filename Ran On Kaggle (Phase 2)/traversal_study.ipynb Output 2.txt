@@ -1,0 +1,388 @@
+Run 2:
+
+RUN_LOCALITY = True
+RUN_HILBERT  = False
+RUN_ALL      = True      # runs diagonal + spiral + raster_1spp (~9 h T4)
+
+PRIOR_RESULTS = {
+    "hilbert": [8.5079, 8.5015, 8.4650]   # from Run 1 output
+}
+
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 50.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 2.8 MB/s eta 0:00:00
+packages ready
+
+torch 2.10.0+cu128 | cuda True | hilbertcurve lib: True
+
+WORK_DIR = /kaggle/working
+device   = cuda
+HF_TOKEN = set
+
+Traversal generators ready.
+
+Traversal                   N    mean    p50    p75     p95     max   vs raster_1spp
+-------------------------------------------------------------------------------------
+raster_v5                2240    36.0   36.0   70.0    70.0      70            2.18x
+raster_1spp              1024    16.5   16.5   32.0    32.0      32            1.00x ← ref
+hilbert                  1024    19.6    1.0    5.0    79.0     853            1.19x
+diagonal                 1024    21.5   19.0   32.0    49.0      62            1.30x
+spiral                   1024    40.6    1.0   87.0   117.0     123            2.46x
+
+Note: raster_1spp is the fair baseline (N=1024, no flyback, same as all alternatives).
+      raster_v5 is a historical reference only (N=2208, different token budget).
+
+
+Flags set. Paper raster baseline: 6.432 +/- 0.183 bpd
+Prior results loaded for: ['hilbert']
+
+Config(image_size=32, channels=3, traversal='hilbert', spp=1, flyback_frac=0.0, d_model=256, n_heads=4, n_layers=6, ffn_mult=4, dropout=0.1, n_mixtures=5, beam_sigma=0.75, use_path_pos_enc=True, use_seq_pos_enc=False, clip_model_name='ViT-B/32', clip_dim=512, epochs=30, batch_size=32, lr=0.0003, warmup_steps=500, grad_clip=1.0, ss_prob_max=0.25, seed=0, device='cuda', eval_every=5, ckpt_dir='/kaggle/working/ckpt')
+
+Loading CLIP …
+open_clip_model.safetensors: 100%
+ 605M/605M [00:02<00:00, 155MB/s]
+/usr/local/lib/python3.12/dist-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+  CLIP ViT-B/32: 151.3M params (frozen)
+Loading Oxford Flowers 102 …
+README.md: 
+ 2.85k/? [00:00<00:00, 284kB/s]
+data/train-00000-of-00001-12de94e121bdbe(…): 100%
+ 303M/303M [00:04<00:00, 66.2MB/s]
+data/test-00000-of-00001-96eeec628415add(…): 100%
+ 43.2M/43.2M [00:01<00:00, 417MB/s]
+Generating train split: 100%
+ 7169/7169 [00:01<00:00, 6263.86 examples/s]
+Generating test split: 100%
+ 1020/1020 [00:00<00:00, 4350.51 examples/s]
+  train=7169, test=1020
+
+traversal   = hilbert  (N=1024)
+params      = 5,669,923  (5.67M)
+nll shape   = torch.Size([2, 1024])   OK
+Sanity check PASSED
+
+  Loaded prior hilbert: [8.5079, 8.5015, 8.465]
+  Skipping hilbert — already in PRIOR_RESULTS.
+
+=== diagonal  seed=0  N=1024 ===
+epoch   1/30  avg_nll=70.9447
+epoch   2/30  avg_nll=64.4819
+epoch   3/30  avg_nll=49.9817
+epoch   4/30  avg_nll=41.1540
+epoch   5/30  avg_nll=34.1304   val bpd=12.9646
+epoch   6/30  avg_nll=21.9485
+epoch   7/30  avg_nll=19.2062
+epoch   8/30  avg_nll=18.7012
+epoch   9/30  avg_nll=18.4823
+epoch  10/30  avg_nll=18.3382   val bpd=8.7828
+epoch  11/30  avg_nll=18.2281
+epoch  12/30  avg_nll=18.1398
+epoch  13/30  avg_nll=18.0708
+epoch  14/30  avg_nll=18.0169
+epoch  15/30  avg_nll=17.9755   val bpd=8.5628
+epoch  16/30  avg_nll=17.9466
+epoch  17/30  avg_nll=17.9266
+epoch  18/30  avg_nll=17.9138
+epoch  19/30  avg_nll=17.9066
+epoch  20/30  avg_nll=17.9039   val bpd=8.5071
+epoch  21/30  avg_nll=17.9027
+epoch  22/30  avg_nll=17.9031
+epoch  23/30  avg_nll=17.9060
+epoch  24/30  avg_nll=17.9095
+epoch  25/30  avg_nll=17.9145   val bpd=8.5114
+epoch  26/30  avg_nll=17.9193
+epoch  27/30  avg_nll=17.9252
+epoch  28/30  avg_nll=17.9312
+epoch  29/30  avg_nll=17.9384
+epoch  30/30  avg_nll=17.9450   val bpd=8.5229
+  bpd_pixel = 8.5229
+
+=== diagonal  seed=1  N=1024 ===
+epoch   1/30  avg_nll=72.8950
+epoch   2/30  avg_nll=67.5742
+epoch   3/30  avg_nll=58.6874
+epoch   4/30  avg_nll=48.9123
+epoch   5/30  avg_nll=31.6581   val bpd=11.2264
+epoch   6/30  avg_nll=20.4849
+epoch   7/30  avg_nll=18.7409
+epoch   8/30  avg_nll=18.4921
+epoch   9/30  avg_nll=18.3512
+epoch  10/30  avg_nll=18.2478   val bpd=8.7215
+epoch  11/30  avg_nll=18.1637
+epoch  12/30  avg_nll=18.0946
+epoch  13/30  avg_nll=18.0380
+epoch  14/30  avg_nll=17.9950
+epoch  15/30  avg_nll=17.9625   val bpd=8.5430
+epoch  16/30  avg_nll=17.9392
+epoch  17/30  avg_nll=17.9241
+epoch  18/30  avg_nll=17.9145
+epoch  19/30  avg_nll=17.9096
+epoch  20/30  avg_nll=17.9073   val bpd=8.4968
+epoch  21/30  avg_nll=17.9079
+epoch  22/30  avg_nll=17.9088
+epoch  23/30  avg_nll=17.9126
+epoch  24/30  avg_nll=17.9164
+epoch  25/30  avg_nll=17.9214   val bpd=8.5065
+epoch  26/30  avg_nll=17.9271
+epoch  27/30  avg_nll=17.9327
+epoch  28/30  avg_nll=17.9391
+epoch  29/30  avg_nll=17.9459
+epoch  30/30  avg_nll=17.9530   val bpd=8.5170
+  bpd_pixel = 8.5170
+
+=== diagonal  seed=2  N=1024 ===
+epoch   1/30  avg_nll=71.4351
+epoch   2/30  avg_nll=65.8980
+epoch   3/30  avg_nll=54.8068
+epoch   4/30  avg_nll=39.9149
+epoch   5/30  avg_nll=24.1513   val bpd=9.6994
+epoch   6/30  avg_nll=19.3368
+epoch   7/30  avg_nll=18.6110
+epoch   8/30  avg_nll=18.3625
+epoch   9/30  avg_nll=18.2170
+epoch  10/30  avg_nll=18.1092   val bpd=8.6453
+epoch  11/30  avg_nll=18.0259
+epoch  12/30  avg_nll=17.9617
+epoch  13/30  avg_nll=17.9149
+epoch  14/30  avg_nll=17.8814
+epoch  15/30  avg_nll=17.8594   val bpd=8.4843
+epoch  16/30  avg_nll=17.8460
+epoch  17/30  avg_nll=17.8387
+epoch  18/30  avg_nll=17.8348
+epoch  19/30  avg_nll=17.8336
+epoch  20/30  avg_nll=17.8337   val bpd=8.4600
+epoch  21/30  avg_nll=17.8357
+epoch  22/30  avg_nll=17.8389
+epoch  23/30  avg_nll=17.8432
+epoch  24/30  avg_nll=17.8489
+epoch  25/30  avg_nll=17.8534   val bpd=8.4698
+epoch  26/30  avg_nll=17.8594
+epoch  27/30  avg_nll=17.8669
+epoch  28/30  avg_nll=17.8739
+epoch  29/30  avg_nll=17.8812
+epoch  30/30  avg_nll=17.8874   val bpd=8.4830
+  bpd_pixel = 8.4830
+
+=== spiral  seed=0  N=1024 ===
+epoch   1/30  avg_nll=71.0712
+epoch   2/30  avg_nll=64.6711
+epoch   3/30  avg_nll=50.1660
+epoch   4/30  avg_nll=41.0134
+epoch   5/30  avg_nll=32.8599   val bpd=12.0594
+epoch   6/30  avg_nll=21.3282
+epoch   7/30  avg_nll=19.1861
+epoch   8/30  avg_nll=18.6911
+epoch   9/30  avg_nll=18.4654
+epoch  10/30  avg_nll=18.3128   val bpd=8.7665
+epoch  11/30  avg_nll=18.1946
+epoch  12/30  avg_nll=18.0987
+epoch  13/30  avg_nll=18.0232
+epoch  14/30  avg_nll=17.9632
+epoch  15/30  avg_nll=17.9176   val bpd=8.5401
+epoch  16/30  avg_nll=17.8854
+epoch  17/30  avg_nll=17.8630
+epoch  18/30  avg_nll=17.8496
+epoch  19/30  avg_nll=17.8424
+epoch  20/30  avg_nll=17.8391   val bpd=8.4838
+epoch  21/30  avg_nll=17.8387
+epoch  22/30  avg_nll=17.8395
+epoch  23/30  avg_nll=17.8429
+epoch  24/30  avg_nll=17.8477
+epoch  25/30  avg_nll=17.8530   val bpd=8.4857
+epoch  26/30  avg_nll=17.8588
+epoch  27/30  avg_nll=17.8667
+epoch  28/30  avg_nll=17.8734
+epoch  29/30  avg_nll=17.8805
+epoch  30/30  avg_nll=17.8881   val bpd=8.4982
+  bpd_pixel = 8.4982
+
+=== spiral  seed=1  N=1024 ===
+epoch   1/30  avg_nll=72.9007
+epoch   2/30  avg_nll=67.6023
+epoch   3/30  avg_nll=58.7219
+epoch   4/30  avg_nll=48.8822
+epoch   5/30  avg_nll=31.7831   val bpd=11.2565
+epoch   6/30  avg_nll=20.5490
+epoch   7/30  avg_nll=18.7566
+epoch   8/30  avg_nll=18.4950
+epoch   9/30  avg_nll=18.3436
+epoch  10/30  avg_nll=18.2307   val bpd=8.7153
+epoch  11/30  avg_nll=18.1385
+epoch  12/30  avg_nll=18.0616
+epoch  13/30  avg_nll=17.9984
+epoch  14/30  avg_nll=17.9492
+epoch  15/30  avg_nll=17.9116   val bpd=8.5277
+epoch  16/30  avg_nll=17.8844
+epoch  17/30  avg_nll=17.8670
+epoch  18/30  avg_nll=17.8550
+epoch  19/30  avg_nll=17.8497
+epoch  20/30  avg_nll=17.8471   val bpd=8.4766
+epoch  21/30  avg_nll=17.8479
+epoch  22/30  avg_nll=17.8491
+epoch  23/30  avg_nll=17.8537
+epoch  24/30  avg_nll=17.8578
+epoch  25/30  avg_nll=17.8639   val bpd=8.4854
+epoch  26/30  avg_nll=17.8702
+epoch  27/30  avg_nll=17.8777
+epoch  28/30  avg_nll=17.8846
+epoch  29/30  avg_nll=17.8930
+epoch  30/30  avg_nll=17.9004   val bpd=8.4969
+  bpd_pixel = 8.4969
+
+=== spiral  seed=2  N=1024 ===
+epoch   1/30  avg_nll=71.4187
+epoch   2/30  avg_nll=65.8945
+epoch   3/30  avg_nll=54.8018
+epoch   4/30  avg_nll=39.8863
+epoch   5/30  avg_nll=24.1894   val bpd=9.7098
+epoch   6/30  avg_nll=19.3654
+epoch   7/30  avg_nll=18.6186
+epoch   8/30  avg_nll=18.3545
+epoch   9/30  avg_nll=18.1965
+epoch  10/30  avg_nll=18.0777   val bpd=8.6328
+epoch  11/30  avg_nll=17.9844
+epoch  12/30  avg_nll=17.9121
+epoch  13/30  avg_nll=17.8579
+epoch  14/30  avg_nll=17.8188
+epoch  15/30  avg_nll=17.7936   val bpd=8.4606
+epoch  16/30  avg_nll=17.7776
+epoch  17/30  avg_nll=17.7693
+epoch  18/30  avg_nll=17.7650
+epoch  19/30  avg_nll=17.7637
+epoch  20/30  avg_nll=17.7649   val bpd=8.4347
+epoch  21/30  avg_nll=17.7679
+epoch  22/30  avg_nll=17.7719
+epoch  23/30  avg_nll=17.7771
+epoch  24/30  avg_nll=17.7841
+epoch  25/30  avg_nll=17.7893   val bpd=8.4427
+epoch  26/30  avg_nll=17.7965
+epoch  27/30  avg_nll=17.8043
+epoch  28/30  avg_nll=17.8126
+epoch  29/30  avg_nll=17.8206
+epoch  30/30  avg_nll=17.8287   val bpd=8.4561
+  bpd_pixel = 8.4561
+
+=== raster_1spp  seed=0  N=1024 ===
+epoch   1/30  avg_nll=70.9110
+epoch   2/30  avg_nll=64.3856
+epoch   3/30  avg_nll=49.9591
+epoch   4/30  avg_nll=41.0416
+epoch   5/30  avg_nll=33.2571   val bpd=12.3138
+epoch   6/30  avg_nll=21.4667
+epoch   7/30  avg_nll=19.1832
+epoch   8/30  avg_nll=18.6961
+epoch   9/30  avg_nll=18.4762
+epoch  10/30  avg_nll=18.3278   val bpd=8.7752
+epoch  11/30  avg_nll=18.2135
+epoch  12/30  avg_nll=18.1208
+epoch  13/30  avg_nll=18.0481
+epoch  14/30  avg_nll=17.9905
+epoch  15/30  avg_nll=17.9467   val bpd=8.5521
+epoch  16/30  avg_nll=17.9152
+epoch  17/30  avg_nll=17.8940
+epoch  18/30  avg_nll=17.8802
+epoch  19/30  avg_nll=17.8730
+epoch  20/30  avg_nll=17.8703   val bpd=8.4948
+epoch  21/30  avg_nll=17.8693
+epoch  22/30  avg_nll=17.8700
+epoch  23/30  avg_nll=17.8737
+epoch  24/30  avg_nll=17.8776
+epoch  25/30  avg_nll=17.8826   val bpd=8.4982
+epoch  26/30  avg_nll=17.8882
+epoch  27/30  avg_nll=17.8954
+epoch  28/30  avg_nll=17.9019
+epoch  29/30  avg_nll=17.9099
+epoch  30/30  avg_nll=17.9170   val bpd=8.5106
+  bpd_pixel = 8.5106
+
+=== raster_1spp  seed=1  N=1024 ===
+epoch   1/30  avg_nll=72.9277
+epoch   2/30  avg_nll=67.6146
+epoch   3/30  avg_nll=58.6880
+epoch   4/30  avg_nll=48.7857
+epoch   5/30  avg_nll=31.5713   val bpd=11.1919
+epoch   6/30  avg_nll=20.4794
+epoch   7/30  avg_nll=18.7463
+epoch   8/30  avg_nll=18.4919
+epoch   9/30  avg_nll=18.3451
+epoch  10/30  avg_nll=18.2360   val bpd=8.7166
+epoch  11/30  avg_nll=18.1471
+epoch  12/30  avg_nll=18.0734
+epoch  13/30  avg_nll=18.0133
+epoch  14/30  avg_nll=17.9669
+epoch  15/30  avg_nll=17.9320   val bpd=8.5332
+epoch  16/30  avg_nll=17.9067
+epoch  17/30  avg_nll=17.8914
+epoch  18/30  avg_nll=17.8811
+epoch  19/30  avg_nll=17.8760
+epoch  20/30  avg_nll=17.8744   val bpd=8.4858
+epoch  21/30  avg_nll=17.8752
+epoch  22/30  avg_nll=17.8768
+epoch  23/30  avg_nll=17.8809
+epoch  24/30  avg_nll=17.8860
+epoch  25/30  avg_nll=17.8912   val bpd=8.4951
+epoch  26/30  avg_nll=17.8975
+epoch  27/30  avg_nll=17.9045
+epoch  28/30  avg_nll=17.9115
+epoch  29/30  avg_nll=17.9188
+epoch  30/30  avg_nll=17.9268   val bpd=8.5062
+  bpd_pixel = 8.5062
+
+=== raster_1spp  seed=2  N=1024 ===
+epoch   1/30  avg_nll=71.3184
+epoch   2/30  avg_nll=65.7551
+epoch   3/30  avg_nll=54.5310
+epoch   4/30  avg_nll=39.4744
+epoch   5/30  avg_nll=23.8983   val bpd=9.6606
+epoch   6/30  avg_nll=19.3072
+epoch   7/30  avg_nll=18.6031
+epoch   8/30  avg_nll=18.3533
+epoch   9/30  avg_nll=18.2030
+epoch  10/30  avg_nll=18.0901   val bpd=8.6376
+epoch  11/30  avg_nll=18.0018
+epoch  12/30  avg_nll=17.9332
+epoch  13/30  avg_nll=17.8827
+epoch  14/30  avg_nll=17.8460
+epoch  15/30  avg_nll=17.8226   val bpd=8.4713
+epoch  16/30  avg_nll=17.8072
+epoch  17/30  avg_nll=17.8005
+epoch  18/30  avg_nll=17.7957
+epoch  19/30  avg_nll=17.7947
+epoch  20/30  avg_nll=17.7956   val bpd=8.4455
+epoch  21/30  avg_nll=17.7984
+epoch  22/30  avg_nll=17.8022
+epoch  23/30  avg_nll=17.8076
+epoch  24/30  avg_nll=17.8141
+epoch  25/30  avg_nll=17.8192   val bpd=8.4543
+epoch  26/30  avg_nll=17.8259
+epoch  27/30  avg_nll=17.8342
+epoch  28/30  avg_nll=17.8417
+epoch  29/30  avg_nll=17.8502
+epoch  30/30  avg_nll=17.8573   val bpd=8.4682
+  bpd_pixel = 8.4682
+
+Results saved -> /kaggle/working/traversal_results.json
+
+========================================================================
+TRAVERSAL COMPARISON — Oxford Flowers 32x32, 30 ep, 3 seeds
+Primary baseline: raster_1spp = 8.4950 bpd
+========================================================================
+Traversal                       bpd mean   bpd std   vs primary ref
+------------------------------------------------------------------------
+raster_v5 (ref, N=2208)           6.4320    0.1830      (hist. ref)
+spiral                            8.4837    0.0239           -0.011
+hilbert                           8.4915    0.0231           -0.004
+raster_1spp                       8.4950    0.0233       ← baseline
+diagonal                          8.5076    0.0215           +0.013
+
+  RESULT: hilbert did NOT beat raster_1spp (delta = +0.0035 bpd, threshold = 0.1).  ✗
+  RESULT: diagonal did NOT beat raster_1spp (delta = -0.0127 bpd, threshold = 0.1).  ✗
+  RESULT: spiral did NOT beat raster_1spp (delta = +0.0113 bpd, threshold = 0.1).  ✗
+
+  CONCLUSION: No traversal improves over raster_1spp at equal N.
+  Frame as negative result: traversal geometry alone does not predict
+  likelihood at this scale. Do NOT generate samples or draft paper
+  claims from these runs without additional evidence.
+
+Set RUN_SAMPLES=True after RUN_HILBERT training completes.

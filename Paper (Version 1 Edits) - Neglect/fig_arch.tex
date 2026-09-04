@@ -1,0 +1,102 @@
+% fig_arch.tex
+% Architecture diagram. Compact horizontal layout:
+% (LEFT)  conditioning chain     -> FiLM input to transformer
+% (CENTRE) data flow column      -> shifted input -> transformer -> head
+% (RIGHT) inference render chain -> sample -> renderer -> output
+
+\begin{figure}[t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tikzpicture}[
+    font=\sffamily\footnotesize,
+    >=Stealth,
+    node distance=3mm,
+    box/.style    ={draw, rounded corners=2pt, inner sep=3pt,
+                    minimum height=7mm, minimum width=22mm,
+                    align=center, fill=white},
+    txtbox/.style ={box, fill=blue!8},
+    netbox/.style ={box, fill=orange!12},
+    headbox/.style={box, fill=green!12},
+    rendbox/.style={box, fill=red!10},
+    inbox/.style  ={box, fill=gray!10},
+    arr/.style={->, semithick},
+]
+
+% =========================================================
+% Centre column: data flow (top -> bottom)
+% =========================================================
+\node[inbox]              (sig)   {target $\mathbf{s}\in[0,1]^{N\times C}$};
+\node[inbox, below=of sig](input) {teacher-forced input};
+\node[box,   fill=yellow!15, below=of input] (proj)
+        {input projection};
+\node[box,   fill=yellow!15, below=of proj] (pe)
+        {{\bfseries +} 2D path PE};
+
+% Transformer (visual stack)
+\begin{scope}[on background layer]
+\node[netbox, below=of pe, xshift=0.7mm, yshift=-0.7mm] (b2) {};
+\end{scope}
+\node[netbox, below=of pe] (tx)
+    {causal transformer\\\scriptsize 6 blocks, FiLM};
+
+\node[headbox, below=of tx] (head)
+    {DMoL head\\\scriptsize $K{=}5$ mixtures};
+
+% Centre arrows
+\draw[arr] (sig.south)   -- (input.north);
+\draw[arr] (input.south) -- (proj.north);
+\draw[arr] (proj.south)  -- (pe.north);
+\draw[arr] (pe.south)    -- (tx.north);
+\draw[arr] (tx.south)    -- (head.north);
+
+% =========================================================
+% Left column: conditioning, aligned with transformer
+% =========================================================
+\node[txtbox, left=10mm of pe.west,  anchor=east] (txt)  {prompt};
+\node[txtbox, left=10mm of tx.west,  anchor=east] (clip) {CLIP ViT-B/32};
+\node[txtbox, left=10mm of head.west,anchor=east] (cond) {cond.\ vector $\mathbf{c}$};
+\draw[arr] (txt.south)  -- (clip.north);
+\draw[arr] (clip.south) -- (cond.north);
+
+% Conditioning -> transformer (FiLM)
+\draw[arr] (cond.east) .. controls +(15mm,0) and +(-12mm,0) ..
+    node[pos=0.65, above, font=\sffamily\scriptsize]{FiLM}
+    (tx.west);
+
+% =========================================================
+% Right column: inference rendering chain
+% =========================================================
+\node[inbox,   right=12mm of head, anchor=west] (pred)
+    {predicted $\hat{\mathbf{s}}$};
+\node[rendbox, above=of pred] (rend)
+    {Gaussian-beam\\renderer};
+\node[inbox, above=of rend] (out)
+    {output $\hat{\mathbf{x}}$};
+
+\draw[arr] (head.east) -- node[above, font=\sffamily\scriptsize]{sample}
+    (pred.west);
+\draw[arr] (pred.north) -- (rend.south);
+\draw[arr] (rend.north) -- (out.south);
+
+% =========================================================
+% Training loss (dashed): head -> target signal
+% =========================================================
+\draw[arr, dashed, gray!75!black, thick]
+    (head.north east) .. controls +(8mm,4mm) and +(8mm,-4mm) ..
+    node[pos=0.55, right, font=\sffamily\scriptsize\itshape, black]
+        {NLL loss}
+    (sig.east);
+
+\end{tikzpicture}%
+}
+\caption{Signal-space autoregressive architecture. The target image
+is converted to a 1D signal $\mathbf{s}$ by sampling along a fixed
+raster path (omitted from the figure for clarity). A causal
+transformer with FiLM conditioning on a CLIP text embedding
+$\mathbf{c}$ predicts the next signal value at each step. The DMoL
+output head provides the training likelihood (dashed arrow back to
+the target). At inference, the predicted signal $\hat{\mathbf{s}}$
+is mapped to an image $\hat{\mathbf{x}}$ by the differentiable
+Gaussian-beam renderer (right column).}
+\label{fig:arch}
+\end{figure}
